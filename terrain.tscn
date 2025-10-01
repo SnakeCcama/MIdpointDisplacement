@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgc2sfwir0jpe"]
+
+[ext_resource type="Shader" uid="uid://snoj8fx7nv7o" path="res://sprite_2d.gdshader" id="1_0u6kl"]
+[ext_resource type="Script" uid="uid://bidoojo2j2qr3" path="res://color_rect.gd" id="2_avahw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7k1k"]
+shader = ExtResource("1_0u6kl")
+shader_parameter/u_resolution = Vector2(0, 0)
+shader_parameter/num_points = 0
+
+[node name="CanvasGroup" type="CanvasGroup"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_n7k1k")
+offset_right = 1153.0
+offset_bottom = 653.0
+script = ExtResource("2_avahw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="HSlider" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = -10.0
+offset_right = 370.0
+offset_bottom = 50.0
+max_value = 1.0
+step = 0.1
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 56.0
+offset_bottom = 56.0
+text = "Rough
+"
+
+[connection signal="value_changed" from="Control/HSlider" to="ColorRect" method="_on_h_slider_value_changed"]
